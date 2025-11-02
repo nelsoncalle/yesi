@@ -35,4 +35,42 @@ body {
   .headermovil {
     display: block;
   }
+
+  .headermovil {
+    display: flex;
+    align-items: center;         /* Centra verticalmente */
+    justify-content: center;     /* Centra horizontalmente el contenido */
+    position: relative;
+    height: 90px;
+    padding: 0 20px;
+  }
+
+  .hamburger-icon {
+    position: absolute;
+    left: 20px;                  /* Separado del borde izquierdo */
+    top: 50%;                    /* Centrado verticalmente */
+    transform: translateY(-50%); /* Ajuste fino para centrar */
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+    cursor: pointer;
+  }
+
+  .menu-icon {
+    display: flex;
+    align-items: center;
+    
+  }
+
+
+
+  .logo {
+    color: #000;
+    font-size: 20px;
+    margin: 0 auto; /* Centra el logo horizontalmente */
+   
+  }
+
+
+
 }
