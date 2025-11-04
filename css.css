@@ -52,17 +52,26 @@ body {
     color: #A9A9A9; /* un gris oscuro al pasar el mouse */
 }
 
+
+.menu-icon {
+  display: flex;
+  align-items: center;
+  cursor: pointer; /* permite que se note que es clicable */
+}
+
 /* Menú Móvil: oculto por defecto, se desliza desde la izquierda */
 .navmovil {
   position: fixed;
-  top: 0;
-  left: -100%; /* Oculto fuera de pantalla */
-  width: 70%;
-  height: 100%;
+  top: 90px; /* coincide con la altura de .headermovil; ajusta si cambias esa altura */
+  left: 0;
+  width: 100%;
   background-color: #000;
-  transition: left 0.3s ease;
-  padding-top: 60px;
+  transform: translateY(-100%); /* oculto arriba */
+  transition: transform 0.3s ease;
   z-index: 1000;
+  max-height: calc(100vh - 90px);
+  overflow: auto;
+  padding-top: 0;
 }
 
 .navmovil ul {
@@ -80,7 +89,7 @@ body {
 
 /* Mostrar menú móvil cuando está activo */
 .navmovil.active {
-  left: 0;
+  transform: translateY(0);
 }
 /* Mostramos el header móvil solo en pantallas pequeñas (móviles) */
 @media screen and (max-width: 768px) {
