@@ -12,11 +12,11 @@ body {
   justify-content: center; /* Centra horizontalmente */
   align-items: center;     /* Centra verticalmente */
   height: 50px;           /* Ajusta según tu diseño */
-  background-color: #000; /* Opcional para visualizar el área */
+  background-color: #000; /* Fondo oscuro para el header de escritorio */
   padding: 10px 20px;
 }
 
-.logo {
+.headerweb .logo { /* Especificamos para el logo dentro de headerweb */
   color: #fff; /* Blanco */
 }
 
@@ -30,7 +30,7 @@ body {
 .navweb {
   display: flex;
   justify-content: center;
-  background-color: #fff;
+  background-color: #fff; /* Fondo blanco para el nav de escritorio */
   padding: 10px 0;
 }
 
@@ -38,14 +38,14 @@ body {
   display: flex;
   gap: 30px;
   list-style: none;
+  padding: 0; 
+  margin: 0; 
 }
 
 .navweb a {
-  color: #fff;
+  color: #000; /* Texto negro para los enlaces de escritorio */
   text-decoration: none;
   font-weight: bold;
-  color: #000;
-  text-decoration: none;
 }
 
 .navweb a:hover {
@@ -59,15 +59,15 @@ body {
   cursor: pointer; /* permite que se note que es clicable */
 }
 
-/* Menú Móvil: oculto por defecto, se desliza desde la izquierda */
+/* Menú Móvil: oculto por defecto, se desliza desde arriba */
 .navmovil {
   position: fixed;
   top: 90px; /* coincide con la altura de .headermovil; ajusta si cambias esa altura */
   left: 0;
   width: 100%;
-  background-color: #000;
+  background-color: #000; /* Fondo negro para el menú móvil */
   transform: translateY(-100%); /* oculto arriba */
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease-out; /* Transición suave */
   z-index: 1000;
   max-height: calc(100vh - 90px);
   overflow: auto;
@@ -77,48 +77,129 @@ body {
 .navmovil ul {
   list-style: none;
   padding: 0;
+  margin: 0; 
 }
 
 .navmovil a {
   display: block;
   padding: 15px 20px;
-  color: #fff;
+  color: #fff; /* Texto blanco para los enlaces del menú móvil */
   text-decoration: none;
-  border-bottom: 1px solid #444;
+  border-bottom: 1px solid #444; /* Borde sutil entre elementos del menú */
+}
+
+.navmovil a:hover {
+  background-color: #333; /* Fondo gris oscuro al pasar el mouse en móvil */
 }
 
 /* Mostrar menú móvil cuando está activo */
 .navmovil.active {
   transform: translateY(0);
 }
+
+/* Footer elegante */
+.footer {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: space-around;
+  background-color: #000; /* Fondo negro para el footer */
+  color: #fff;
+  padding: 40px 20px;
+  margin-top: 50px; 
+}
+
+.footer-column {
+  flex: 1; 
+  min-width: 200px; 
+  margin: 10px;
+}
+
+.footer-column h3 {
+  color: #fff;
+  margin-bottom: 15px;
+  font-size: 1.2em;
+}
+
+.footer-column p,
+.footer-column a {
+  color: #A9A9A9; /* Un gris más claro para el texto y enlaces */
+  text-decoration: none;
+  line-height: 1.8;
+}
+
+.footer-column a:hover {
+  color: #fff;
+}
+
+.footer-note {
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #333; 
+  color: #A9A9A9;
+  font-size: 0.9em;
+}
+
+/* Botón flotante de WhatsApp */
+.whatsapp-icon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25D366; 
+  color: #fff;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  z-index: 1000;
+  transition: transform 0.2s ease-in-out;
+}
+
+.whatsapp-icon:hover {
+  transform: scale(1.1);
+}
+
+
 /* Mostramos el header móvil solo en pantallas pequeñas (móviles) */
 @media screen and (max-width: 768px) {
 
-   .navweb {
+   .navweb { /* ESTA REGLA ASEGURA QUE EL NAV DE ESCRITORIO SE OCULTA */
     display: none;
   }
 
-  .headerweb {
+  .headerweb { /* ESTA REGLA ASEGURA QUE EL HEADER DE ESCRITORIO SE OCULTA */
     display: none;
   }
-  .headermovil {
-    display: block;
-  }
-
-  .headermovil {
-    display: flex;
-    align-items: center;         /* Centra verticalmente */
-    justify-content: center;     /* Centra horizontalmente el contenido */
+  
+  .headermovil { /* ESTA REGLA HACE VISIBLE EL HEADER MÓVIL */
+    display: flex; /* Cambiado a flex para control de alineación */
+    align-items: center;         
+    justify-content: center;     
     position: relative;
     height: 90px;
     padding: 0 20px;
+    background-color: #fff; 
+    border-bottom: 1px solid #eee; 
+  }
+
+  /* Ajustes para el logo dentro del headermovil */
+  .headermovil .logo { 
+    color: #000;
+    font-size: 20px;
+    margin: 0 auto; 
   }
 
   .hamburger-icon {
     position: absolute;
-    left: 20px;                  /* Separado del borde izquierdo */
-    top: 50%;                    /* Centrado verticalmente */
-    transform: translateY(-50%); /* Ajuste fino para centrar */
+    left: 20px;                  
+    top: 50%;                    
+    transform: translateY(-50%); 
     width: 35px;
     height: 35px;
     object-fit: contain;
@@ -126,20 +207,33 @@ body {
   }
 
   .menu-icon {
-    display: flex;
+    display: flex; /* Asegura que el icono y el logo estén juntos si deseas */
     align-items: center;
-    
+    /* Eliminar cualquier margin auto aquí si quieres que el icono y el logo floten */
   }
 
 
-
-  .logo {
-    color: #000;
-    font-size: 20px;
-    margin: 0 auto; /* Centra el logo horizontalmente */
-   
+  /* AJUSTES MEJORADOS PARA EL FOOTER EN MÓVILES */
+  .footer {
+    flex-direction: column; 
+    align-items: center;    
+    text-align: center;     
+    padding: 20px 10px;     
   }
 
+  .footer-column {
+    width: 100%; 
+    max-width: 300px; 
+    margin-bottom: 30px; 
+  }
 
+  .footer-column:last-of-type { 
+    margin-bottom: 0;
+  }
+
+  .footer-note {
+    margin-top: 20px;
+    padding-top: 15px;
+  }
 
 }
