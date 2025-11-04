@@ -2,35 +2,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const toggleMenu = document.querySelector('.menu-icon');
     const navmovil = document.getElementById('navmovil');
 
-    toggleMenu.addEventListener('click', () => {
-        navmovil.classList.toggle('active');
-    });
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    const toggleMenu = document.querySelector('.menu-icon');
-    const navmovil = document.getElementById('navmovil');
-
-    // Variable para almacenar la última posición de scroll
     let lastScrollY = window.scrollY;
 
-    // Función para abrir/cerrar el menú al hacer clic en el icono
-    toggleMenu.addEventListener('click', () => {
-        navmovil.classList.toggle('active');
-    });
+    if (toggleMenu && navmovil) { // Asegúrate de que los elementos existan
+        toggleMenu.addEventListener('click', () => {
+            console.log('Clic en hamburguesa! Toggleando menú...');
+            navmovil.classList.toggle('active'); // Esto añade o quita la clase 'active' en #navmovil
+        });
+    } else {
+        console.error("ERROR: Elemento .menu-icon o #navmovil no encontrado. El menú no funcionará.");
+        if (!toggleMenu) console.error("No se encontró el elemento con la clase .menu-icon");
+        if (!navmovil) console.error("No se encontró el elemento con el ID #navmovil");
+    }
 
-    // Evento de scroll para cerrar el menú
     window.addEventListener('scroll', () => {
-        // Obtenemos la posición de scroll actual
         const currentScrollY = window.scrollY;
 
-        // Comprobamos si el menú móvil está activo y si el usuario se desplaza hacia abajo
-        if (navmovil.classList.contains('active') && currentScrollY > lastScrollY) {
-            // Si el menú está abierto y bajando, lo cerramos
+        if (navmovil && navmovil.classList.contains('active') && currentScrollY > lastScrollY) {
+            console.log('Scroll hacia abajo con menú abierto. Cerrando menú...');
             navmovil.classList.remove('active');
         }
 
-        // Actualizamos la última posición de scroll
         lastScrollY = currentScrollY;
     });
 });
