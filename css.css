@@ -204,6 +204,17 @@ a {
   transform: scale(1.1);
 }
 
+.footer-note a {
+  color: #fff; /* Color inicial (puedes ajustarlo) */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-note a:hover {
+  color: #888; /* Gris elegante al pasar el mouse */
+}
+
+
 /* ======================================================= */
 /* ESTILOS PARA MÓVILES (MEDIA QUERY) */
 /* ======================================================= */
