@@ -8,9 +8,14 @@
 
 body {
   margin: 0;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Lora', sans-serif;
   background-color: #fff;
   color: #000;
+  padding-top: 0;
+}
+
+body.fixed-header-padding {
+    padding-top: 90px; /* 70px (header) + 20px (nav) */
 }
 
 h1 {
@@ -69,6 +74,12 @@ a {
   height: 50px;
   background-color: #000;
   padding: 10px var(--padding-sides);
+  position: fixed; /* Mantiene el header fijo en la ventana */
+  top: 0;          /* Lo posiciona en la parte superior */
+  left: 0;         /* Lo alinea a la izquierda */
+  width: 100%;     /* Ocupa todo el ancho de la pantalla */
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .headerweb .logo {
@@ -83,6 +94,13 @@ a {
   background-color: var(--background-color);
   padding: 10px 0;
   border-bottom: 1px solid var(--border-color); /* Borde sutil */
+   /* --- NUEVOS ESTILOS PARA LA NAV WEB, DEBE ESTAR DEBAJO DEL HEADER FIJO --- */
+  position: fixed; /* También fija la navegación */
+  top: 70px; /* Ajusta este valor: 50px (altura del headerweb) + 10px (padding top) + 10px (padding bottom) = 70px */
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 .navweb ul {
@@ -300,6 +318,10 @@ a {
 @media screen and (max-width: 768px) {
 
   /* --- Elementos de Escritorio (Ocultos en Móvil) --- */
+  body.fixed-header-padding {
+      padding-top: var(--header-height); /* 70px, usando tu variable */
+  }
+
   .headerweb,
   .navweb {
     display: none;
