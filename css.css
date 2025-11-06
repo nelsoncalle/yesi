@@ -19,6 +19,17 @@ a {
   color: inherit; /* Para que los enlaces hereden el color del padre si no se especifica */
 }
 
+/* Variables CSS para mantener los estilos consistentes y fáciles de cambiar */
+:root {
+    --primary-text-color: #333;
+    --secondary-text-color: #666;
+    --background-color: #fff;
+    --border-color: #eee;
+    --header-height: 70px; /* Un poco más compacto */
+    --padding-sides: 15px;
+}
+
+
 /* ======================================================= */
 /* ESTILOS PARA ESCRITORIO (POR DEFECTO) */
 /* ======================================================= */
@@ -30,7 +41,7 @@ a {
   align-items: center;
   height: 50px;
   background-color: #000;
-  padding: 10px 20px;
+  padding: 10px var(--padding-sides);
 }
 
 .headerweb .logo {
@@ -42,9 +53,9 @@ a {
 .navweb {
   display: flex; /* Visible por defecto */
   justify-content: center;
-  background-color: #fff;
+  background-color: var(--background-color);
   padding: 10px 0;
-  border-bottom: 1px solid #eee; /* Borde sutil */
+  border-bottom: 1px solid var(--border-color); /* Borde sutil */
 }
 
 .navweb ul {
@@ -53,9 +64,10 @@ a {
 }
 
 .navweb a {
-  color: #000;
+  color: var(--primary-text-color);
   font-weight: bold;
   padding: 5px 0; /* Espacio alrededor del texto del enlace */
+  transition: color 0.3s ease;
 }
 
 .navweb a:hover {
@@ -71,18 +83,17 @@ a {
 /* --- Menú Móvil (Preparación para la animación, pero el contenedor está oculto por display:none) --- */
 .navmovil {
   position: fixed;
-  top: 90px; /* Se ajustará a la altura del headermovil cuando esté visible */
+  top: var(--header-height); /* Se ajustará a la altura del headermovil cuando esté visible */
   left: 0;
   width: 100%;
   background-color: #000;
   transform: translateY(-100%); /* Oculto arriba, fuera de la vista */
-  transition: transform 0.3s ease-out; /* Animación de deslizamiento */
-  z-index: 1000;
-  max-height: calc(100vh - 90px); /* Ocupa el resto de la altura de la ventana */
-  overflow: auto; /* Para desplazar el contenido si hay muchos enlaces */
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0.5s step-end; 
+  z-index: 999; /* Un poco menos que el header para que el header esté encima */
+  max-height: calc(100vh - var(--header-height)); /* Ocupa el resto de la altura de la ventana */
+  overflow-y: auto; /* Para desplazar el contenido si hay muchos enlaces */
   opacity: 0;
   visibility: hidden;
-  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0.5s step-end; 
 }
 
 .navmovil ul {
@@ -94,6 +105,7 @@ a {
   padding: 15px 20px;
   color: #fff;
   border-bottom: 1px solid #444;
+  transition: background-color 0.3s ease;
 }
 
 .navmovil a:hover {
@@ -111,7 +123,7 @@ a {
 
 .galeria {
   text-align: center;
-  padding: 40px 20px;
+  padding: 40px var(--padding-sides);
   background-color: #f8f8f8;
 }
 
@@ -126,6 +138,7 @@ a {
 
 .foto-elegante {
   width: 300px;
+  max-width: 100%; /* Asegura que no se desborde en pantallas pequeñas */
   height: auto;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -144,7 +157,7 @@ a {
   justify-content: space-around;
   background-color: #000;
   color: #fff;
-  padding: 40px 20px;
+  padding: 40px var(--padding-sides);
   margin-top: 50px;
 }
 
@@ -185,23 +198,53 @@ a {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: #25D366;
-  color: #fff;
+  background-color: #000; /* Fondo negro */
+  border: 1px solid #333; /* Borde gris oscuro para definir mejor */
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 55px; /* Ligeramente más grande para que el SVG tenga espacio */
+  height: 55px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2em;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  /* font-size: 2em; /* Ya no es necesario si usamos una imagen SVG */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); /* Sombra más fuerte y oscura */
   cursor: pointer;
   z-index: 1000;
-  transition: transform 0.2s ease-in-out;
+
+  /* Animación de pulsación más lenta */
+  animation: pulse-subtle 3s infinite ease-in-out; /* Nombre de la animación, duración, y que se repita infinitamente */
 }
 
+/* Estilos para la imagen SVG dentro del botón */
+.whatsapp-icon .whatsapp-img {
+  width: 30px; /* Tamaño del icono SVG */
+  height: 30px;
+  filter: invert(100%); /* Invierte los colores del SVG a blanco */
+  display: block; /* Asegura que la imagen se comporte correctamente */
+}
+
+/* Efecto al pasar el ratón */
 .whatsapp-icon:hover {
-  transform: scale(1.1);
+  transform: scale(1.08); /* Un ligero escalado al pasar el ratón */
+}
+
+/* Definición de la animación de pulsación más sutil y lenta */
+@keyframes pulse-subtle {
+  0% {
+    transform: scale(1); /* Tamaño normal */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.03); /* Solo un poco más grande */
+    box-shadow: 0 0 0 12px rgba(128, 128, 128, 0.15); /* Halo gris muy sutil y transparente */
+    opacity: 0.95; /* Ligeramente menos opaco */
+  }
+  100% {
+    transform: scale(1); /* Vuelve al tamaño normal */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    opacity: 1;
+  }
 }
 
 .footer-note a {
@@ -228,37 +271,62 @@ a {
 
   /* --- Header Móvil (Visible en Móvil) --- */
   .headermovil {
-    display: flex; /* Visible en móvil */
+    display: flex; /* Ahora usamos flex para el headermovil principal */
+    justify-content: space-between; /* Distribuye el menú y el texto */
     align-items: center;
-    justify-content: center;
-    position: relative; /* Para posicionar el icono de hamburguesa */
-    height: 90px;
-    padding: 0 20px;
-    background-color: #fff;
-    border-bottom: 1px solid #eee;
+    position: sticky; /* O fixed si quieres que siempre esté visible al hacer scroll */
+    top: 0;
+    height: var(--header-height); /* Usamos la variable */
+    padding: 0 var(--padding-sides); /* Usamos la variable */
+    background-color: var(--background-color);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Sutil sombra para profundidad */
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+    padding-right: 30px;
   }
+
+  /* Contenedor del ícono de menú */
+  .headermovil .menu-icon {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    /* No necesitamos position: absolute aquí, flexbox lo maneja */
+    /* Este div .menu-icon ahora solo contiene la hamburguesa */
+  }
+
+  .headermovil .hamburger-icon {
+    width: 28px; /* Tamaño adecuado para un ícono de menú */
+    height: 28px;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+
+  /* Nuevo contenedor para el logo y el tagline */
+  .headermovil .brand-info {
+    display: flex; /* Convertimos a flexbox */
+    flex-direction: column; /* Apila el h1 y h2 verticalmente */
+    align-items: center; /* Centra el texto horizontalmente */
+    flex-grow: 1; /* Permite que ocupe el espacio restante */
+    text-align: center; /* Asegura que el texto esté centrado en su contenedor */
+    margin-left: 10px; /* Un pequeño margen para separar del icono */
+  }
+
 
   .headermovil .logo {
-    color: #000;
-    font-size: 20px; /* Tamaño de fuente para el logo móvil */
-    margin: 0 auto; /* Centra el logo */
+    color: var(--primary-text-color);
+    font-size: 24px; /* Un poco más grande para el nombre */
+    margin: 0; /* Elimina márgenes por defecto */
+    font-weight: 700; /* Más audaz */
+    letter-spacing: 0.5px; /* Pequeño espaciado para mejor legibilidad */
   }
 
-  .hamburger-icon {
-    position: absolute;
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 35px;
-    height: 35px;
-    object-fit: contain;
-    cursor: pointer;
-    z-index: 1001; /* Asegurar que el icono esté sobre el menú */
-  }
-
-  .menu-icon {
-    display: flex; /* Asegura que la imagen y el logo estén en línea */
-    align-items: center;
+  .headermovil .tagline {
+    color: var(--secondary-text-color);
+    font-size: 14px; /* Tamaño para el subtítulo */
+    margin: 2px 0 0 0; /* Espacio entre el logo y el tagline */
+    font-weight: 400;
+    text-transform: uppercase; /* Para un toque profesional */
+    letter-spacing: 1px;
   }
 
   /* --- Navegación Móvil (Visible en Móvil) --- */
@@ -271,8 +339,7 @@ a {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 20px 10px;
-    
+    padding: 20px var(--padding-sides);
   }
 
   .footer-column {
@@ -288,6 +355,16 @@ a {
   .footer-note {
     margin-top: 20px;
     padding-top: 15px;
+  }
+
+  .galeria .contenedor-fotos {
+    flex-direction: column; /* Apila las fotos verticalmente en móviles */
+    align-items: center;
+  }
+
+  .galeria .foto-elegante {
+    width: 90%; /* Las fotos ocupan casi todo el ancho */
+    max-width: 350px; /* Limita el tamaño máximo de las fotos */
   }
 
 }
