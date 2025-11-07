@@ -322,7 +322,10 @@ a {
   /* --- Elementos de Escritorio (Ocultos en Móvil) --- */
   body.fixed-header-padding {
       padding-top: var(--header-height); /* 70px, usando tu variable */
+      padding-top: 0px;
   }
+
+  
 
   .headerweb,
   .navweb {
