@@ -4,6 +4,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Playfair+Display:wght@700&display=swap');
 
 
 
@@ -175,6 +176,99 @@ a {
 }
 
 
+/* Sección Quién Soy - Estilos Generales (Colores Blanco, Gris, Negro) */
+.quien-soy {
+  background-color: #ffffff; /* Fondo blanco */
+  padding: 60px 20px;
+  text-align: center;
+  max-width: 1200px;
+  margin: 40px auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Sombra más pronunciada en gris oscuro */
+  border: 1px solid #e0e0e0; /* Borde sutil en gris claro */
+}
+
+.quien-soy-contenido {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.quien-soy-titulo {
+  font-family: 'Playfair Display', serif; /* O una fuente elegante que uses */
+  font-size: 2.8em;
+  color: #222222; /* Negro casi puro para el título */
+  margin-bottom: 25px;
+  position: relative;
+  display: inline-block;
+}
+
+.quien-soy-titulo::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 3px;
+  background-color: #888888; /* Gris medio para el subrayado */
+  border-radius: 5px;
+}
+
+.quien-soy-descripcion {
+  font-family: 'Open Sans', sans-serif; /* O una fuente legible que uses */
+  font-size: 1.15em;
+  line-height: 1.7;
+  color: #555555; /* Gris oscuro para la descripción */
+  margin-bottom: 40px;
+  padding: 0 15px;
+}
+
+.btn-conoce-mas {
+  display: inline-block;
+  background-color: #444444; /* Gris oscuro para el botón */
+  color: white; /* Texto blanco en el botón */
+  padding: 14px 30px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.05em;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra más definida */
+}
+
+.btn-conoce-mas:hover {
+  background-color: #222222; /* Negro para el hover del botón */
+  transform: translateY(-2px);
+}
+/* Adaptación para móviles */
+@media (max-width: 768px) {
+  .quien-soy {
+    padding: 40px 15px;
+    margin: 20px auto;
+  }
+
+  .quien-soy-titulo {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+
+  .quien-soy-titulo::after {
+    bottom: -8px;
+    width: 50px;
+  }
+
+  .quien-soy-descripcion {
+    font-size: 1em;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    padding: 0 5px;
+  }
+
+  .btn-conoce-mas {
+    padding: 12px 25px;
+    font-size: 1em;
+  }
+}
 
 .contenedor-fotos {
   display: flex;
@@ -430,4 +524,30 @@ a {
     max-width: 350px; /* Limita el tamaño máximo de las fotos */
   }
 
+  .quien-soy {
+    padding: 40px 15px;
+    margin: 20px auto;
+  }
+
+  .quien-soy-titulo {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+
+  .quien-soy-titulo::after {
+    bottom: -8px;
+    width: 50px;
+  }
+
+  .quien-soy-descripcion {
+    font-size: 1em;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    padding: 0 5px;
+  }
+
+  .btn-conoce-mas {
+    padding: 12px 25px;
+    font-size: 1em;
+  }
 }
