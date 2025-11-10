@@ -240,6 +240,188 @@ a {
   background-color: #222222; /* Negro para el hover del botón */
   transform: translateY(-2px);
 }
+
+
+
+/* Estilos específicos para la página de Contacto */
+
+.main-content {
+    padding-top: 90px; /* Espacio para el header fijo y la nav */
+    padding-bottom: 50px;
+    background-color: #fcfcfc; /* Un blanco muy suave */
+}
+
+.contact-section {
+    max-width: 900px;
+    margin: 40px auto;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 1px solid #eee;
+}
+
+.contact-container {
+    width: 100%;
+    max-width: 600px;
+}
+
+.contact-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3em;
+    color: #333;
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+}
+
+.contact-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #A9A9A9; /* Gris medio */
+    border-radius: 5px;
+}
+
+.contact-description {
+    font-family: 'Lora', serif;
+    font-size: 1.1em;
+    color: #555;
+    line-height: 1.7;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    padding: 0 10px;
+}
+
+/* Estilos del formulario */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.form-group {
+    width: 100%;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    color: #444;
+    font-size: 0.95em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: 'Lora', serif;
+    font-size: 1em;
+    color: #333;
+    background-color: #fcfcfc;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box; /* Importante para que el padding no desborde el ancho */
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #A9A9A9; /* Color gris al enfocar */
+    box-shadow: 0 0 0 3px rgba(169, 169, 169, 0.2); /* Sombra sutil */
+    outline: none; /* Eliminar el contorno por defecto del navegador */
+}
+
+.form-group textarea {
+    resize: vertical; /* Permite redimensionar verticalmente */
+    min-height: 120px;
+}
+
+.submit-button {
+    background-color: #444444; /* Gris oscuro para el botón */
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    align-self: center; /* Centra el botón si es flex-direction column */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    width: fit-content; /* Se ajusta al contenido */
+}
+
+.submit-button:hover {
+    background-color: #222222; /* Negro para el hover */
+    transform: translateY(-2px);
+}
+
+/* Información de contacto adicional */
+.contact-info {
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px solid #eee;
+    width: 100%;
+}
+
+.contact-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.contact-info p {
+    font-family: 'Lora', serif;
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.contact-info a {
+    color: #444;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+    color: #000;
+}
+
+.social-links {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-links a img {
+    width: 35px;
+    height: 35px;
+    transition: transform 0.3s ease;
+}
+
+.social-links a img:hover {
+    transform: scale(1.15);
+}
+
+
 /* Adaptación para móviles */
 @media (max-width: 768px) {
   .quien-soy {
@@ -403,6 +585,10 @@ a {
   transition: color 0.3s ease;
 }
 
+.footer-note p{
+  color: #A9A9A9;
+}
+
 .footer-note a:hover {
   color: #888; /* Gris elegante al pasar el mouse */
 }
@@ -550,4 +736,67 @@ a {
     padding: 12px 25px;
     font-size: 1em;
   }
+
+
+  
+/* Media Queries para Responsive Design */
+@media (max-width: 768px) {
+    .main-content {
+        padding-top: 0px; /* En móvil, el padding del body lo maneja el header */
+    }
+
+    .contact-section {
+        margin: 20px auto;
+        padding: 30px 20px;
+        border-radius: 8px;
+    }
+
+    .contact-title {
+        font-size: 2.2em;
+        margin-bottom: 10px;
+    }
+
+    .contact-title::after {
+        width: 60px;
+        bottom: -8px;
+    }
+
+    .contact-description {
+        font-size: 1em;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="tel"],
+    .form-group textarea {
+        padding: 10px 12px;
+        font-size: 0.95em;
+    }
+
+    .submit-button {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+
+    .contact-info h3 {
+        font-size: 1.5em;
+        margin-bottom: 15px;
+    }
+
+    .contact-info p {
+        font-size: 1em;
+    }
+
+    .social-links {
+        margin-top: 20px;
+        gap: 15px;
+    }
+
+    .social-links a img {
+        width: 30px;
+        height: 30px;
+    }
+}
 }
