@@ -5,6 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Playfair+Display:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap');
 
 
 
@@ -22,7 +23,7 @@ body.fixed-header-padding {
 }
 
 h1 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Lora', serif;
   font-weight: 700; /* Asumiendo que has importado el peso 700 para Playfair Display */
   color: var(--primary-text-color); /* Usar tu variable de color para coherencia */
 }
@@ -112,10 +113,13 @@ a {
 }
 
 .navweb a {
+  font-family: 'League Spartan', sans-serif;
   color: var(--primary-text-color);
   font-weight: bold;
   padding: 5px 0; /* Espacio alrededor del texto del enlace */
   transition: color 0.3s ease;
+  text-transform: uppercase; /* Opcional: para que se vea más como navegación */
+  letter-spacing: 0.8px;
 }
 
 .navweb a:hover {
@@ -149,11 +153,15 @@ a {
 }
 
 .navmovil a {
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 500;
   display: block;
   padding: 15px 20px;
   color: #fff;
   border-bottom: 1px solid #444;
   transition: background-color 0.3s ease;
+  text-transform: uppercase; /* Opcional: para que se vea más como navegación */
+  letter-spacing: 0.8px; 
 }
 
 .navmovil a:hover {
