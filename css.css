@@ -12,7 +12,7 @@
 
 body {
   margin: 0;
-  font-family: 'Lora', sans-serif;
+  font-family: 'League Spartan', sans-serif;
   background-color: #fff;
   color: #000;
   padding-top: 0;
@@ -23,21 +23,21 @@ body.fixed-header-padding {
 }
 
 h1 {
-  font-family: 'Lora', serif;
+  font-family: 'League Spartan', serif;
   font-weight: 700; /* Asumiendo que has importado el peso 700 para Playfair Display */
   color: var(--primary-text-color); /* Usar tu variable de color para coherencia */
 }
 
 /* Aplicar Lora a los h2 (o Playfair si quieres más énfasis) */
 h2 {
-  font-family: 'Lora', serif; /* Puedes usar Lora para subtítulos más ligeros */
+  font-family: 'League Spartan', serif; /* Puedes usar Lora para subtítulos más ligeros */
   font-weight: 400; /* Peso normal para Lora */
   color: var(--secondary-text-color); /* Usar tu variable de color */
 }
 
 /* Aplicar Lora a los párrafos */
 p {
-  font-family: 'Lora', serif;
+  font-family: 'League Spartan', serif;
   font-weight: 400; /* Peso normal para Lora */
   line-height: 1.6; /* Mejora la legibilidad de los párrafos */
   color: var(--primary-text-color);
@@ -203,7 +203,7 @@ a {
 }
 
 .quien-soy-titulo {
-  font-family: 'Playfair Display', serif; /* O una fuente elegante que uses */
+  font-family: 'League Spartan', serif; /* O una fuente elegante que uses */
   font-size: 2.8em;
   color: #222222; /* Negro casi puro para el título */
   margin-bottom: 25px;
@@ -224,7 +224,7 @@ a {
 }
 
 .quien-soy-descripcion {
-  font-family: 'Open Sans', sans-serif; /* O una fuente legible que uses */
+  font-family: 'League Spartan', sans-serif; /* O una fuente legible que uses */
   font-size: 1.15em;
   line-height: 1.7;
   color: #555555; /* Gris oscuro para la descripción */
@@ -280,7 +280,7 @@ a {
 }
 
 .contact-title {
-    font-family: 'Playfair Display', serif;
+    font-family: 'League Spartan', serif;
     font-size: 3em;
     color: #333;
     margin-bottom: 15px;
@@ -301,7 +301,7 @@ a {
 }
 
 .contact-description {
-    font-family: 'Lora', serif;
+    font-family: 'League Spartan', serif;
     font-size: 1.1em;
     color: #555;
     line-height: 1.7;
@@ -501,7 +501,7 @@ a {
 
 .footer-column h3 {
   /* Aquí aplicamos Bebas Neue a los títulos de columna del footer */
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'League Spartan', sans-serif;
   color: #fff; /* Asegura que el título sea blanco */
   margin-bottom: 15px;
   font-size: 1.5em; /* Un poco más grande para que destaque */
@@ -511,7 +511,7 @@ a {
 
 .footer-column p,
 .footer-column a {
-  font-family: 'Lora', serif; /* Mantendría Lora para los textos y enlaces del footer para legibilidad */
+  font-family: 'League Spartan', serif; /* Mantendría Lora para los textos y enlaces del footer para legibilidad */
   color: #A9A9A9;
   line-height: 1.8;
 }
@@ -528,7 +528,7 @@ a {
   border-top: 1px solid #333;
   color: #A9A9A9;
   font-size: 0.9em;
-  font-family: 'Lora', serif; /* Mantener Lora para la nota del footer */
+  font-family: 'League Spartan', serif; /* Mantener Lora para la nota del footer */
 }
 
 /* ... el resto de tu CSS ... */
@@ -635,6 +635,7 @@ a {
     box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Sutil sombra para profundidad */
     z-index: 1000; /* Asegura que esté por encima de otros elementos */
     padding-right: 30px;
+    
   }
 
   /* Contenedor del ícono de menú */
@@ -667,9 +668,10 @@ a {
   .headermovil .logo {
     color: #000;
     font-size: 24px; /* Un poco más grande para el nombre */
-    margin: 0; /* Elimina márgenes por defecto */
-    font-weight: 700; /* Más audaz */
-    letter-spacing: 0.5px; /* Pequeño espaciado para mejor legibilidad */
+    margin: 2px 0 0 0;
+    font-weight: 650; /* Más audaz */
+    text-transform: uppercase;
+    letter-spacing: 1px; /* Pequeño espaciado para mejor legibilidad */
   }
 
   .headermovil .tagline {
@@ -684,20 +686,31 @@ a {
   /* --- Navegación Móvil (Visible en Móvil) --- */
   .navmovil {
     display: block; /* Hacemos visible el contenedor en móvil */
+    color: var(--secondary-text-color);
+    font-size: 14px; /* Tamaño para el subtítulo */
+    margin: 2px 0 0 0; /* Espacio entre el logo y el tagline */
+    font-weight: 400;
+    text-transform: uppercase; /* Para un toque profesional */
+    letter-spacing: 1px;
   }
 
+  ul{
+    letter-spacing: 1px;
+  }
   /* --- Footer en Móvil --- */
   .footer {
     flex-direction: column;
     align-items: center;
     text-align: center;
     padding: 20px var(--padding-sides);
+    letter-spacing: 1px;
   }
 
   .footer-column {
     width: 100%;
     max-width: 300px;
     margin-bottom: 30px;
+    letter-spacing: 1px;
   }
 
   .footer-column:last-of-type {
