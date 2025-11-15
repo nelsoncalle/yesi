@@ -432,35 +432,55 @@ a {
 
 
 
-/* Estilos Generales para el carrusel */
+
+
+
+
 .carousel-container {
     position: relative;
     width: 100%;
-    max-width: 800px; /* Ajusta esto al ancho máximo que desees para el carrusel */
-    margin: 20px auto; /* Centra el carrusel */
+    max-width: 800px; /* Puedes ajustar este ancho máximo general si quieres */
+    margin: 20px auto;
     overflow: hidden;
-    border: 1px solid #ccc; /* Borde sutil */
-    background-color: #f5f5f5; /* Fondo gris claro */
+    border: 1px solid #ccc;
+    background-color: #f5f5f5;
+    /* Añadimos una altura mínima para que el carrusel no sea demasiado delgado si las imágenes son pequeñas */
+    min-height: 200px; /* Altura mínima por defecto para web */
+    display: flex; /* Para centrar contenido si la imagen no ocupa todo */
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
 }
 
 .carousel-slide {
     display: flex;
-    transition: transform 0.5s ease-in-out; /* Suaviza la transición */
+    transition: transform 0.5s ease-in-out;
+    width: 100%; /* Asegura que el slide ocupe el 100% del contenedor */
+    height: 100%; /* Asegura que el slide ocupe el 100% del contenedor */
+    align-items: center; /* Centra la imagen verticalmente dentro del slide */
+    justify-content: center; /* Centra la imagen horizontalmente dentro del slide */
 }
 
 .carousel-slide img {
-    width: 100%;
-    flex-shrink: 0; /* Asegura que las imágenes no se encojan */
-    display: block;
+    /* Eliminamos width: 100% para controlar el tamaño directamente */
+    /* Usaremos max-width y max-height para limitar el tamaño de la imagen */
+    max-width: 90%; /* La imagen no ocupará más del 90% del ancho del carrusel */
+    max-height: 400px; /* Establece una altura máxima para las imágenes en la web */
     height: auto; /* Mantiene la proporción de la imagen */
+    object-fit: contain; /* Asegura que la imagen se ajuste dentro del contenedor sin cortarse */
+    flex-shrink: 0;
+    display: block;
+    margin: auto; /* Para centrar la imagen dentro de su espacio si es más pequeña que el max-width/height */
+    /* Añadido un poco de padding o margen para que no toque los bordes */
+    padding: 10px;
+    box-sizing: border-box; /* Incluye padding en el tamaño total */
 }
 
-/* Botones de Navegación */
+/* Botones de Navegación (sin cambios, ya están bien) */
 .prev-button, .next-button {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente oscuro */
+    background-color: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;
     padding: 10px 15px;
@@ -468,7 +488,7 @@ a {
     cursor: pointer;
     z-index: 10;
     transition: background-color 0.3s ease;
-    border-radius: 5px; /* Bordes redondeados */
+    border-radius: 5px;
 }
 
 .prev-button:hover, .next-button:hover {
@@ -483,29 +503,28 @@ a {
     right: 10px;
 }
 
-/* Puntos de Navegación (indicadores) */
+/* Puntos de Navegación (sin cambios, ya están bien) */
 .carousel-dots {
     position: absolute;
     bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 8px; /* Espacio entre los puntos */
+    gap: 8px;
 }
 
 .dot {
     width: 12px;
     height: 12px;
-    background-color: #bbb; /* Gris claro */
+    background-color: #bbb;
     border-radius: 50%;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 .dot.active {
-    background-color: #555; /* Gris oscuro para el punto activo */
+    background-color: #555;
 }
-
 /* Colores y Temas (Asegúrate de que tus estilos generales usen esto) */
 
 
@@ -845,9 +864,18 @@ a {
 /* Aquí puedes añadir más estilos para tu header, footer, etc. */
 /* Ejemplo de media query para dispositivos móviles */
 
+ 
+
     .carousel-container {
-        max-width: 100%; /* El carrusel ocupa todo el ancho en móviles */
+        max-width: 100%;
         margin: 10px auto;
+        min-height: 150px; /* Reducimos la altura mínima para móvil */
+    }
+
+    .carousel-slide img {
+        max-height: 250px; /* Reducimos la altura máxima para imágenes en móvil */
+        max-width: 95%; /* Las imágenes pueden ocupar un poco más de ancho en móvil */
+        padding: 5px;
     }
 
     .prev-button, .next-button {
