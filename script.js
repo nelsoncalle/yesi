@@ -1,8 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // --- Lógica del menú móvil ---
     const toggleMenu = document.querySelector('.menu-icon');
     const navmovil = document.getElementById('navmovil');
 
-    let lastScrollY = window.scrollY;
+    let lastScrollY = window.scrollY; // Para detectar la dirección del scroll
 
     if (toggleMenu && navmovil) { // Asegúrate de que los elementos existan
         toggleMenu.addEventListener('click', () => {
@@ -15,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!navmovil) console.error("No se encontró el elemento con el ID #navmovil");
     }
 
+    // Cierra el menú móvil si se hace scroll hacia abajo mientras está abierto
     window.addEventListener('scroll', () => {
         const currentScrollY = window.scrollY;
 
@@ -27,23 +29,59 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
+    // --- Lógica del Carrusel ---
+    // Referencias a los elementos del DOM
+    const carouselContainer = document.querySelector('.carousel-container'); // El contenedor visible del carrusel
+    const carouselSlide = document.querySelector('.carousel-slide'); // El contenedor interno que se desplaza
+    const images = document.querySelectorAll('.carousel-slide img'); // Todas las imágenes dentro del carrusel
+    const prevButton = document.querySelector('.prev-button');
+    const nextButton = document.querySelector('.next-button');
+    const dotsContainer = document.querySelector('.carousel-dots');
 
+    let currentIndex = 0; // Índice de la imagen actualmente visible
+    let dots = []; // Array para almacenar los elementos de los puntos de navegación
 
+    // Función para obtener el ancho actual del área visible del carrusel
+    // Esto es crucial para saber cuánto debe desplazarse el carouselSlide
+    function getCurrentSlideWidth() {
+        if (carouselContainer) {
+            return carouselContainer.clientWidth;
+        }
+        return 0; // Si el contenedor no existe, devuelve 0 para evitar errores
+    }
 
+    // Función para actualizar la posición del carrusel y el estado de los puntos
+    function updateCarousel() {
+        if (!carouselSlide || images.length === 0) {
+            return; // No hacer nada si no hay carrusel o imágenes
+        }
 
-    
-        const carouselSlide = document.querySelector('.carousel-slide');
-        const images = document.querySelectorAll('.carousel-slide img');
-        const prevButton = document.querySelector('.prev-button');
-        const nextButton = document.querySelector('.next-button');
-        const dotsContainer = document.querySelector('.carousel-dots');
+        const slideWidth = getCurrentSlideWidth(); // Obtiene el ancho actual del contenedor
+        carouselSlide.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
 
-        let currentIndex = 0;
-        const imageWidth = images[0].clientWidth; // Ancho de una imagen
-        const totalImages = images.length;
+        // Actualizar la clase 'active' de los puntos de navegación
+        dots.forEach((dot, index) => {
+            if (index === currentIndex) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
+    }
 
-        // Crear los puntos de navegación
-        for (let i = 0; i < totalImages; i++) {
+    // Función para inicializar o reiniciar el carrusel (crear puntos, establecer posición inicial)
+    function initializeCarousel() {
+        if (!carouselContainer || !carouselSlide || images.length === 0) {
+            console.warn("No se encontró el carrusel o no hay imágenes. No se inicializará el carrusel.");
+            return;
+        }
+
+        // Limpiar puntos existentes antes de volver a crearlos (útil en resize)
+        dotsContainer.innerHTML = '';
+        dots = []; // Resetear el array de puntos
+
+        // Crear los puntos de navegación dinámicamente
+        for (let i = 0; i < images.length; i++) {
             const dot = document.createElement('span');
             dot.classList.add('dot');
             dot.setAttribute('data-index', i);
@@ -52,45 +90,47 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentIndex = parseInt(dot.getAttribute('data-index'));
                 updateCarousel();
             });
+            dots.push(dot); // Añadir el nuevo punto al array
         }
 
-        const dots = document.querySelectorAll('.dot');
-
-        // Función para actualizar la posición del carrusel y los puntos
-        function updateCarousel() {
-            carouselSlide.style.transform = `translateX(${-currentIndex * imageWidth}px)`;
-
-            // Actualizar la clase 'active' de los puntos
-            dots.forEach((dot, index) => {
-                if (index === currentIndex) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
-            });
+        // Asegurarse de que currentIndex no exceda el número de imágenes
+        // si el número de imágenes cambia (menos probable aquí)
+        if (currentIndex >= images.length) {
+            currentIndex = 0;
         }
 
-        // Navegación con los botones
+        updateCarousel(); // Actualizar el carrusel a la posición inicial o actual
+    }
+
+    // --- Event Listeners para la navegación del carrusel ---
+    if (nextButton) {
         nextButton.addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % totalImages;
+            currentIndex = (currentIndex + 1) % images.length; // Avanza al siguiente, vuelve al inicio si llega al final
             updateCarousel();
         });
+    }
 
+    if (prevButton) {
         prevButton.addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+            currentIndex = (currentIndex - 1 + images.length) % images.length; // Retrocede, vuelve al final si llega al inicio
             updateCarousel();
         });
+    }
 
-        // Inicializar el carrusel al cargar la página
-        updateCarousel();
+    // --- Inicialización del Carrusel al cargar el DOM ---
+    initializeCarousel();
 
-        // Actualizar el ancho de la imagen en caso de redimensionamiento de la ventana
-        window.addEventListener('resize', () => {
-            // Recalcula el ancho de la imagen para asegurar que el carrusel se vea bien
-            // Esto es importante para la responsividad
-            const newImageWidth = images[0].clientWidth;
-            carouselSlide.style.transform = `translateX(${-currentIndex * newImageWidth}px)`;
-        });
-    
+    // --- Actualizar el carrusel en caso de redimensionamiento de la ventana ---
+    window.addEventListener('resize', () => {
+        console.log('Ventana redimensionada. Actualizando carrusel...');
+        updateCarousel(); // Solo recalcular la posición y el transform
+    });
+
+    // --- Opcional pero recomendado: Re-inicializar el carrusel una vez que todos los recursos (imágenes) han cargado ---
+    // Esto asegura que `clientWidth` sea preciso después de que las imágenes tengan sus dimensiones finales.
+    window.addEventListener('load', () => {
+        console.log('Todas las imágenes y recursos cargados. Re-inicializando carrusel...');
+        initializeCarousel();
+    });
 
 });

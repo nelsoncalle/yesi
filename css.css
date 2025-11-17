@@ -431,104 +431,114 @@ a {
 }
 
 
-
-
-
-
-
+/* ======================================================= */
+/* ESTILOS DEL CARRUSEL (MODIFICADOS) */
+/* ======================================================= */
 .carousel-container {
     position: relative;
     width: 100%;
-    max-width: 800px; /* Puedes ajustar este ancho máximo general si quieres */
-    margin: 20px auto;
-    overflow: hidden;
-    border: 1px solid #ccc;
-    background-color: #f5f5f5;
-    /* Añadimos una altura mínima para que el carrusel no sea demasiado delgado si las imágenes son pequeñas */
-    min-height: 200px; /* Altura mínima por defecto para web */
-    display: flex; /* Para centrar contenido si la imagen no ocupa todo */
-    align-items: center; /* Centra verticalmente */
-    justify-content: center; /* Centra horizontalmente */
+    max-width: 600px; /* Reducimos el ancho máximo para una vista más centrada */
+    margin: 30px auto;
+    overflow: hidden; /* Esto es esencial para ocultar las imágenes que no están en el view */
+    border: 1px solid #e0e0e0;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    
+    /* Nueva altura fija para el contenedor del carrusel */
+    height: 400px; /* Altura fija para el contenedor en web, ajusta según necesidad */
+    display: flex; /* Para centrar el contenido (el carousel-slide) */
+    align-items: center;
+    justify-content: flex-start; /* Alineamos a la izquierda para el desplazamiento */
 }
 
 .carousel-slide {
     display: flex;
-    transition: transform 0.5s ease-in-out;
-    width: 100%; /* Asegura que el slide ocupe el 100% del contenedor */
-    height: 100%; /* Asegura que el slide ocupe el 100% del contenedor */
-    align-items: center; /* Centra la imagen verticalmente dentro del slide */
-    justify-content: center; /* Centra la imagen horizontalmente dentro del slide */
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    height: 100%; /* El slide ocupa el 100% de la altura del contenedor */
+    /* Eliminamos width: 100% aquí, las imágenes individuales definirán el ancho total */
 }
 
 .carousel-slide img {
-    /* Eliminamos width: 100% para controlar el tamaño directamente */
-    /* Usaremos max-width y max-height para limitar el tamaño de la imagen */
-    max-width: 90%; /* La imagen no ocupará más del 90% del ancho del carrusel */
-    max-height: 400px; /* Establece una altura máxima para las imágenes en la web */
-    height: auto; /* Mantiene la proporción de la imagen */
-    object-fit: contain; /* Asegura que la imagen se ajuste dentro del contenedor sin cortarse */
-    flex-shrink: 0;
+    /* La clave: Cada imagen ahora tiene el ancho completo del CONTEENEDOR DEL CARRUSEL */
+    width: 100%; 
+    max-width: 100%; /* Asegura que no desborde su propio 'slot' */
+    
+    /* La altura se ajusta a la del contenedor del carrusel */
+    height: 100%; 
+    max-height: 100%; /* Asegura que no desborde su propio 'slot' */
+    
+    /* Usamos 'contain' para ver la imagen completa sin recortar, centrada */
+    object-fit: contain; /* Muestra la imagen completa, dejando espacios si la proporción no coincide */
+    object-position: center;
+    
+    flex-shrink: 0; /* MUY IMPORTANTE: Evita que las imágenes se encojan */
     display: block;
-    margin: auto; /* Para centrar la imagen dentro de su espacio si es más pequeña que el max-width/height */
-    /* Añadido un poco de padding o margen para que no toque los bordes */
-    padding: 10px;
-    box-sizing: border-box; /* Incluye padding en el tamaño total */
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin: auto; /* Centra la imagen dentro de su "slot" */
 }
 
-/* Botones de Navegación (sin cambios, ya están bien) */
+/* Botones de Navegación (no se necesitan cambios sustanciales aquí) */
 .prev-button, .next-button {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.6);
     color: white;
     border: none;
-    padding: 10px 15px;
-    font-size: 24px;
+    padding: 12px 18px;
+    font-size: 28px;
     cursor: pointer;
     z-index: 10;
-    transition: background-color 0.3s ease;
-    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border-radius: 8px;
+    opacity: 0.8;
 }
 
 .prev-button:hover, .next-button:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.9);
+    transform: translateY(-50%) scale(1.05);
+    opacity: 1;
 }
 
 .prev-button {
-    left: 10px;
+    left: 15px;
 }
 
 .next-button {
-    right: 10px;
+    right: 15px;
 }
 
-/* Puntos de Navegación (sin cambios, ya están bien) */
+/* Puntos de Navegación (no se necesitan cambios sustanciales aquí) */
 .carousel-dots {
     position: absolute;
-    bottom: 10px;
+    bottom: 15px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 8px;
+    gap: 10px;
 }
 
 .dot {
-    width: 12px;
-    height: 12px;
-    background-color: #bbb;
+    width: 14px;
+    height: 14px;
+    background-color: #cccccc;
     border-radius: 50%;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: 2px solid transparent;
 }
 
 .dot.active {
-    background-color: #555;
+    background-color: #555555;
+    border-color: #333333;
+    transform: scale(1.2);
 }
-/* Colores y Temas (Asegúrate de que tus estilos generales usen esto) */
 
-
-
+.dot:hover {
+    background-color: #999999;
+}
 
 
 
@@ -864,35 +874,8 @@ a {
 /* Aquí puedes añadir más estilos para tu header, footer, etc. */
 /* Ejemplo de media query para dispositivos móviles */
 
- 
 
-    .carousel-container {
-        max-width: 100%;
-        margin: 10px auto;
-        min-height: 150px; /* Reducimos la altura mínima para móvil */
-    }
 
-    .carousel-slide img {
-        max-height: 250px; /* Reducimos la altura máxima para imágenes en móvil */
-        max-width: 95%; /* Las imágenes pueden ocupar un poco más de ancho en móvil */
-        padding: 5px;
-    }
-
-    .prev-button, .next-button {
-        padding: 8px 12px;
-        font-size: 20px;
-    }
-
-    .carousel-dots {
-        bottom: 5px;
-        gap: 6px;
-    }
-
-    .dot {
-        width: 10px;
-        height: 10px;
-    }
-  
 /* Media Queries para Responsive Design */
 @media (max-width: 768px) {
     .main-content {
@@ -951,6 +934,61 @@ a {
     .social-links a img {
         width: 30px;
         height: 30px;
+    }
+
+    .carousel-container {
+        max-width: 100%;
+        margin: 20px auto;
+        height: 300px; /* Altura fija para el contenedor en móvil */
+        border-radius: 10px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .carousel-slide img {
+        border-radius: 8px;
+    }
+
+    .prev-button, .next-button {
+        /* *** INICIO DE LAS MODIFICACIONES CLAVE PARA BOTONES MÓVILES *** */
+        width: 35px; /* Establecer un ancho fijo para el botón */
+        height: 35px; /* Establecer una altura fija, haciéndolos cuadrados */
+        padding: 0; /* Eliminar padding para controlar el tamaño solo con width/height */
+        font-size: 16px; /* Tamaño de la flecha más pequeño */
+        border-radius: 50%; /* Hacerlos completamente redondos */
+        background-color: rgba(0, 0, 0, 0.4); /* Fondo más transparente */
+        color: white;
+        display: flex; /* Usar flexbox para centrar la flecha dentro del círculo */
+        justify-content: center;
+        align-items: center;
+        z-index: 10;
+        transition: background-color 0.3s ease; /* Solo transición del color de fondo */
+        /* opacity: 0.7; (Ya no es necesario si el background-color ya es transparente) */
+        /* *** FIN DE LAS MODIFICACIONES CLAVE *** */
+    }
+
+    /* Posicionamiento específico para cada botón */
+    .prev-button {
+        left: 8px; /* Pequeña separación del borde izquierdo */
+    }
+
+    .next-button {
+        right: 8px; /* Pequeña separación del borde derecho */
+    }
+
+    /* Ajuste de hover para móvil: los hacemos un poco más visibles al "hover" (tocar) */
+    .prev-button:hover, .next-button:hover {
+        background-color: rgba(0, 0, 0, 0.6); /* Un poco más oscuro al tocar */
+        transform: translateY(-50%) scale(1); /* Desactivar el efecto de escala en hover para móvil */
+    }
+
+    .carousel-dots {
+        bottom: 10px;
+        gap: 8px;
+    }
+
+    .dot {
+        width: 10px;
+        height: 10px;
     }
 }
 }
