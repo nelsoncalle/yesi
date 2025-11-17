@@ -540,6 +540,34 @@ a {
     background-color: #999999;
 }
 
+    .footer-column {
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 30px;
+        letter-spacing: 1px;
+    }
+
+.social-icons-footer {
+    display: flex; /* Para que los iconos se coloquen uno al lado del otro */
+    gap: 15px; /* Espacio entre los iconos */
+    margin-top: 20px; /* Separación de los párrafos de contacto */
+    justify-content: center; /* Centra los iconos si la columna es ancha */
+    /* En móvil, las columnas del footer se centran, así que 'center' aquí es buena opción */
+    
+}
+
+.social-icons-footer a img {
+    width: 30px; /* Tamaño del icono */
+    height: 30px;
+    filter: invert(50%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(150%) contrast(80%); /* Color gris claro */
+    transition: filter 0.3s ease, transform 0.3s ease; /* Transiciones suaves */
+}
+
+.social-icons-footer a img:hover {
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(200%) contrast(100%); /* Blanco puro al pasar el mouse */
+    transform: scale(1.1); /* Ligero agrandamiento al pasar el mouse */
+}
+
 
 
 
@@ -610,6 +638,23 @@ a {
   min-width: 200px;
   margin: 10px;
 }
+
+
+
+ .footer {
+    
+    align-items: center;
+    text-align: center;
+    padding: 20px var(--padding-sides);
+    letter-spacing: 1px;
+  }
+
+  .footer-column {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+  }
 
 .footer-column h3 {
   /* Aquí aplicamos Bebas Neue a los títulos de columna del footer */
@@ -990,5 +1035,20 @@ a {
         width: 10px;
         height: 10px;
     }
+
+
+    .social-icons-footer {
+        justify-content: center; /* Asegura que los iconos estén centrados en móvil */
+        margin-top: 15px;
+        gap: 10px;
+    }
+
+    .social-icons-footer a img {
+        width: 25px; /* Iconos ligeramente más pequeños en móvil */
+        height: 25px;
+    }
+
+
+
 }
 }
