@@ -571,6 +571,108 @@ a {
 
 
 
+
+
+
+
+
+    .servicios {
+            text-align: center;
+            padding: 60px 0;
+        }
+        
+        .servicios-titulo {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #333;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .servicios-titulo:after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            bottom: -10px;
+            left: 20%;
+        }
+        
+        .servicios-descripcion {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        
+        .servicios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .servicio-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 400px;
+        }
+        
+        .servicio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .servicio-imagen {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .servicio-item:hover .servicio-imagen {
+            transform: scale(1.05);
+        }
+        
+        .servicio-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 30px 20px 20px;
+            text-align: center;
+        }
+        
+        .servicio-nombre {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        }
+        
+        .servicio-descripcion {
+            font-size: 1rem;
+            opacity: 0.9;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, opacity 0.5s ease;
+        }
+        
+        .servicio-item:hover .servicio-descripcion {
+            max-height: 100px;
+            opacity: 1;
+        }
+        
+
+
+
+
 /* Adaptación para móviles */
 @media (max-width: 768px) {
   .quien-soy {
@@ -1047,6 +1149,24 @@ a {
         width: 25px; /* Iconos ligeramente más pequeños en móvil */
         height: 25px;
     }
+
+
+
+Responsive */
+        
+            .servicios-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .servicio-item {
+                height: 300px;
+            }
+            
+            .servicios-titulo {
+                font-size: 2rem;
+            }
+        
 
 
 
