@@ -1170,6 +1170,12 @@ a {
     margin: 0;
     width: 100%;
   }
+
+
+  .servicio-texto-container{
+    text-align: center;
+    padding-left: 18px;
+  }
   
   /* Cada servicio ocupa todo el ancho disponible */
   .servicio-item {
@@ -1179,7 +1185,8 @@ a {
     padding: 0;
     height: 70vh;
     overflow: hidden;
-    border-radius: 0; /* Temporal sin bordes */
+    border-radius: 15px; /* Temporal sin bordes */
+    text-align: center;
   }
   
   /* Imágenes que ocupan todo el ancho sin cortarse */
