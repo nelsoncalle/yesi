@@ -207,11 +207,11 @@ function initializeServicios() {
     });
     
     // Mostrar el primer servicio por defecto
-    if (servicioItems.length > 0) {
-        const primerServicio = servicioItems[0].getAttribute('data-servicio');
-        console.log('Servicio por defecto:', primerServicio);
-        mostrarDetalles(primerServicio);
-    }
+    //if (servicioItems.length > 0) {
+    //    const primerServicio = servicioItems[0].getAttribute('data-servicio');
+    //    console.log('Servicio por defecto:', primerServicio);
+    //    mostrarDetalles(primerServicio);
+    //}
 }
 
 // Llamar a la función después de tu código existente

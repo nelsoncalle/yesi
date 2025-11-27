@@ -1342,23 +1342,25 @@ a {
   .galeria .contenedor-fotos {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    padding: 0; /* ELIMINAR PADDING LATERAL */
-    margin: 0;
+    gap: 30px;
+    padding: 0;
+    margin: 0 auto;
     width: 100%;
+    max-width: 350px;
+    align-items: center;
   }
 
 
   .servicio-texto-container{
     text-align: center;
-    padding-left: 18px;
+    padding: 0;
   }
   
   /* Cada servicio ocupa todo el ancho disponible */
   .servicio-item {
     position: relative;
     width: 100%;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     height: 70vh;
     overflow: hidden;
@@ -1403,10 +1405,12 @@ a {
     color: #ffffff;
     font-size: 2rem;
     font-weight: 300;
-    letter-spacing: 3px;
+    /* letter-spacing: 3px; */
+    letter-spacing: 4px;
     margin-bottom: 1rem;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
-    font-family: 'Playfair Display', serif;
+    /* font-family: 'Playfair Display', serif; */
+    font-family: 'Cormorant Garamond', serif;
     text-align: center;
     width: 90%;
   }
@@ -1424,14 +1428,7 @@ a {
   }
 
 
-  section.galeria {
-    PADDING-LEFT: 4PX;
-  }
 
-    #conoce-mas {
-      padding-left: 0 !important;
-      margin-left: 40px; /* Para compensar si es necesario */
-    }
 
 
 
@@ -1439,9 +1436,21 @@ a {
 
   .servicio-detalles {
     padding: 20px 15px;
-    margin-top: 15px;
+    margin: 20px auto;
+    width: 100%;
+    max-width: 350px;
+    box-sizing: border-box;
   }
   
+
+
+  .servicio-detalles.active {
+    margin-left: auto;
+    margin-right: auto;
+    transform: none !important;
+}
+
+
   .detalles-contenido h4 {
     font-size: 1.2em;
   }
@@ -1489,6 +1498,43 @@ a {
     scroll-margin-top: 20px;
   }
 
+
+
+
+  .proceso-servicio h5,
+.recargos-domicilio h5 {
+  font-family: 'League Spartan', serif;
+  color: #333;
+  margin-bottom: 15px;
+  
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+  text-align: left; /* Solo esto cambia - alineación derecha */
+  width: 100%; /* Asegura que ocupe todo el ancho */
+}
+
+
+
+
+/* ======================================================= */
+/* PADDING SOLO PARA ELEMENTOS ESPECÍFICOS */
+/* ======================================================= */
+
+/* Aplicar padding solo al contenedor de servicios, no a los detalles */
+
+
+
+/* GALERÍA EN MÓVIL - SIN MOVIMIENTO */
+.galeria .contenedor-fotos {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 0;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 350px; /* LIMITAR ANCHO MÁXIMO */
+    align-items: center; /* CENTRAR TODO */
+}
 }
 
 
