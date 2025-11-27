@@ -133,4 +133,88 @@ document.addEventListener('DOMContentLoaded', () => {
         initializeCarousel();
     });
 
+
+
+
+
+
+    // --- Sistema de Detalles de Servicios ---
+function initializeServicios() {
+    const servicioItems = document.querySelectorAll('.servicio-item');
+    const servicioDetalles = document.querySelectorAll('.servicio-detalles');
+    
+    console.log('Servicios encontrados:', servicioItems.length);
+    console.log('Detalles encontrados:', servicioDetalles.length);
+    
+    // Función para mostrar detalles del servicio seleccionado
+    function mostrarDetalles(servicioId) {
+        console.log('Mostrando detalles para:', servicioId);
+        
+        // Ocultar todos los detalles
+        servicioDetalles.forEach(detalle => {
+            detalle.classList.remove('active');
+        });
+        
+        // Remover clase activa de todos los servicios
+        servicioItems.forEach(item => {
+            item.classList.remove('active');
+        });
+        
+        // Mostrar detalles del servicio seleccionado
+        const detalles = document.getElementById(`detalles-${servicioId}`);
+        if (detalles) {
+            detalles.classList.add('active');
+            console.log('Detalles activados para:', servicioId);
+            
+            // Scroll suave hacia los detalles en móvil
+            if (window.innerWidth <= 768) {
+                setTimeout(() => {
+                    detalles.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start' 
+                    });
+                }, 300);
+            }
+        } else {
+            console.error('No se encontraron detalles para:', servicioId);
+        }
+        
+        // Añadir clase activa al servicio seleccionado
+        const servicioActivo = document.querySelector(`.servicio-item[data-servicio="${servicioId}"]`);
+        if (servicioActivo) {
+            servicioActivo.classList.add('active');
+        }
+    }
+    
+    // Añadir event listeners a cada servicio
+    servicioItems.forEach(item => {
+        const servicioId = item.getAttribute('data-servicio');
+        console.log('Configurando servicio:', servicioId);
+        
+        item.addEventListener('click', function() {
+            mostrarDetalles(servicioId);
+        });
+        
+        // También hacer clickeable el texto del servicio
+        const servicioNombre = item.querySelector('.servicio-nombre');
+        if (servicioNombre) {
+            servicioNombre.style.cursor = 'pointer';
+            servicioNombre.addEventListener('click', function(e) {
+                e.stopPropagation();
+                mostrarDetalles(servicioId);
+            });
+        }
+    });
+    
+    // Mostrar el primer servicio por defecto
+    if (servicioItems.length > 0) {
+        const primerServicio = servicioItems[0].getAttribute('data-servicio');
+        console.log('Servicio por defecto:', primerServicio);
+        mostrarDetalles(primerServicio);
+    }
+}
+
+// Llamar a la función después de tu código existente
+initializeServicios();
+
 });

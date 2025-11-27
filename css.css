@@ -773,6 +773,82 @@ a {
 }
 
 
+.servicio-detalles {
+  display: none;
+  width: 100%;
+  animation: fadeInUp 0.5s ease;
+}
+
+/* Mostrar solo el activo */
+.servicio-detalles.active {
+  display: block;
+}
+
+/* Animación para mostrar los detalles */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Indicador visual para servicio activo */
+.servicio-item.active {
+  position: relative;
+}
+
+.servicio-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #333, transparent);
+  border-radius: 2px;
+}
+
+/* Mejoras para hover y clic */
+.servicio-item {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.servicio-item:hover {
+  transform: translateY(-5px);
+}
+
+.servicio-nombre {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.servicio-item.active .servicio-nombre {
+  color: #f5eef1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Adaptación para móviles */
 @media (max-width: 768px) {
@@ -1348,8 +1424,14 @@ a {
   }
 
 
+  section.galeria {
+    PADDING-LEFT: 4PX;
+  }
 
-
+    #conoce-mas {
+      padding-left: 0 !important;
+      margin-left: 40px; /* Para compensar si es necesario */
+    }
 
 
 
@@ -1391,6 +1473,22 @@ a {
   .recargos-domicilio li {
     font-size: 0.85em;
   }
+
+
+
+.servicio-detalles {
+    margin-top: 15px;
+  }
+  
+  .servicio-item.active::after {
+    width: 90%;
+  }
+  
+  /* Scroll suave para móviles */
+  .servicio-detalles.active {
+    scroll-margin-top: 20px;
+  }
+
 }
 
 
